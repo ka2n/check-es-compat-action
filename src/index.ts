@@ -4,12 +4,16 @@ import { execSync } from "child_process";
 const inputs = {
   version: () => core.getInput("version"),
   files: () => core.getInput("files"),
+  working_directory: () => core.getInput("working-directory"),
 };
 
 try {
-  execSync(`npx check-es-compat@${inputs.version()} ${inputs.files()}`, {
-    stdio: "inherit",
-  });
+  execSync(
+    `cd ${inputs.working_directory()} && npx check-es-compat@${inputs.version()} ${inputs.files()}`,
+    {
+      stdio: "inherit",
+    }
+  );
 } catch (error: any) {
   console.error(error);
   core.setFailed(error.message);
