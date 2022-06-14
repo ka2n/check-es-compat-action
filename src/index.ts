@@ -1,6 +1,5 @@
 import * as core from "@actions/core";
 import { execSync } from "child_process";
-import path from 'path';
 
 const inputs = {
   version: () => core.getInput("version"),
@@ -11,7 +10,7 @@ const inputs = {
 try {
   execSync('npm i -g eslint-plugin-ecmascript-compat check-es-compat')
   execSync(
-    `env NODE_PATH="$(npm root -g):$NODE_PATH" npx check-es-compat ${path.join(inputs.working_directory(), inputs.files())}`,
+    `cd ${inputs.working_directory()} && env NODE_PATH="$(npm root -g):$NODE_PATH" npx check-es-compat ${inputs.files()}`,
     {
       stdio: "inherit",
     }
