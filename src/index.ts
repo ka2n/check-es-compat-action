@@ -8,8 +8,9 @@ const inputs = {
 };
 
 try {
+  execSync(`npm i -g check-es-compat@${inputs.version()}`);
   execSync(
-    `cd ${inputs.working_directory()} && npx check-es-compat@${inputs.version()} ${inputs.files()}`,
+    `cd ${inputs.working_directory()} && check-es-compat ${inputs.files()}`,
     {
       stdio: "inherit",
     }
