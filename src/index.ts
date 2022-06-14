@@ -9,8 +9,9 @@ const inputs = {
 };
 
 try {
+  execSync('npm i -g eslint-plugin-ecmascript-compat check-es-compat')
   execSync(
-    `npx check-es-compat ${path.join(inputs.working_directory(), inputs.files())}`,
+    `env NODE_PATH="$(npm root -g):$NODE_PATH" npx check-es-compat ${path.join(inputs.working_directory(), inputs.files())}`,
     {
       stdio: "inherit",
     }
