@@ -1,5 +1,6 @@
 import * as core from "@actions/core";
 import { execSync } from "child_process";
+import path from 'path';
 
 const inputs = {
   version: () => core.getInput("version"),
@@ -8,9 +9,8 @@ const inputs = {
 };
 
 try {
-  execSync(`npm i -g check-es-compat@${inputs.version()}`);
   execSync(
-    `cd ${inputs.working_directory()} && check-es-compat ${inputs.files()}`,
+    `npx check-es-compat ${path.join(inputs.working_directory(), inputs.files())}`,
     {
       stdio: "inherit",
     }
