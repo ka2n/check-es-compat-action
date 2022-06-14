@@ -1,0 +1,32 @@
+{
+  "name": "check-es-compat-action",
+  "version": "1.0.0",
+  "description": "GitHub Action for check-es-compat",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0",
+    "build": "ncc build src/index.ts --minify",
+    "dev": "npm run build -- --watch"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ka2n/check-es-compat-action.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ka2n/check-es-compat-action/issues"
+  },
+  "homepage": "https://github.com/ka2n/check-es-compat-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "@vercel/ncc": "^0.34.0",
+    "typescript": "^4.7.3"
+  }
+}

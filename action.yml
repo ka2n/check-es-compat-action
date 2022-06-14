@@ -1,0 +1,18 @@
+name: 'check-es-compat-action'
+description: 'Check JavaScript files comply with the targets of your browserslist config'
+author: 'Katsuma Ito'
+branding:
+  color: blue
+  icon: check-circle
+inputs:
+  files:
+    description: 'A glob pattern of files to check'
+    required: false
+    default: '.'
+  version:
+    description: 'The version of check-es-compat'
+    required: false
+    default: ''
+runs:
+  using: 'node16'
+  main: 'index.js'
